@@ -4,7 +4,7 @@
 - [Data Type](#data-type)
   - [Float](#float)
   - [复合类型](#复合类型)
-  - [Struct](#Struct)
+  - [Struct](#struct)
   - [函数](#函数)
     - [默认值](#默认值)
     - [函数重载](#函数重载)
