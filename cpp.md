@@ -181,6 +181,57 @@ a = MyClass(1, 2);
 
 ## STL
 
+### Vector
+
+一个关于方向处理的设计
+
+``` cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    // 测试样例
+    // 1
+    // SSSSSLSSRS
+    // 2
+    // SR
+    // SL
+    int n;
+    int x = 0, y = 0;
+    cin >> n;
+
+    vector<vector<int>> v = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    int d = 0;
+    while (n--) {
+        string str;
+        cin >> str;
+        for (int i = 0; i < str.size(); ++i) {
+            if (str[i] == 'R') {
+                d = d + 1;
+                if (d > 3) {
+                    d = d - 4;
+                }
+            } else if (str[i] == 'L') {
+                d = d - 1;
+                if (d < 0) {
+                    d = d + 4;
+                }
+            } else if (str[i] == 'S') {
+                x += v[d][0];
+                y += v[d][1];
+            }
+        }
+    }
+    if (d != 0 || (x == 0 && y == 0)) {
+        cout << "bounded" << endl;
+    } else {
+        cout << "unbounded" << endl;
+    }
+    return 0;
+}
+```
+
 ### Map
 
 ``` cpp
@@ -354,17 +405,40 @@ int main() {
 
 ### split
 
+stringstream可以吞下任何类型，根据实际需要吐出不同的类型。
+
 ``` cpp
-void split(const std::string& s, std::vector<std::string>& v, const std::string& c) {
-    std::string::size_type pos1, pos2;
+int s2i(string s) {
+    stringstream ss;
+    ss << s;
+    int x;
+    ss >> x;
+    return x;
+}
+```
+
+``` cpp
+string i2s(int i) {
+    stringstream ss;
+    ss << i;
+    string s;
+    ss >> s;
+    return s;
+}
+```
+
+``` cpp
+void split(const string& s, vector<int>& v, const string& c) {
+    string::size_type pos1, pos2;
     pos2 = s.find(c);
     pos1 = 0;
-    while(std::string::npos != pos2) {
-        v.push_back(s.substr(pos1, pos2-pos1));
+    while(string::npos != pos2) {
+        v.push_back(stoi(s.substr(pos1, pos2-pos1)));
         pos1 = pos2 + c.size();
         pos2 = s.find(c, pos1);
     }
     if(pos1 != s.length())
-    v.push_back(s.substr(pos1));
+    v.push_back(stoi(s.substr(pos1)));
 }
 ```
+
