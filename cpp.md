@@ -1,16 +1,24 @@
-## Table of Contents
-
 - [Start](#start)
-- [Data Type](#data-type)
+- [Primitive Data Type](#primitive-data-type)
   - [Float](#float)
-  - [复合类型](#复合类型)
+- [Composite data type](#composite-data-type)
   - [Struct](#struct)
-  - [函数](#函数)
-    - [默认值](#默认值)
-    - [函数重载](#函数重载)
-  - [类](#类)
-- [STL](#STL)
+  - [Function](#function)
+    - [Default Value](#default-value)
+    - [Overloaded](#overloaded)
+  - [Class](#class)
+- [STL](#stl)
   - [Map](#map)
+- [Algorithm](#algorithm)
+  - [Prime](#prime)
+  - [Fast Power](#fast-power)
+  - [GCD](#gcd)
+  - [Union Find](#union-find)
+  - [Sort](#sort)
+- [IO](#io)
+  - [Multi Cin](#multi-cin)
+  - [Getline()](#getline)
+  - [split](#split)
 
 ## Start
 
@@ -27,7 +35,7 @@ int main() {
 }
 ```
 
-## Data Type
+## Primitive Data Type
 
 ### Float
 
@@ -42,7 +50,7 @@ float b = a + 1.0f;
 cout << b - a;  // 0， 因为float类型只能表示前7位，修改第23位对这个值不会有任何影响
 ```
 
-### 复合类型
+## Composite data type
 
 多使用get()而不是getline()，getline读完后并不知道是读到了末尾还是由于数组已经填满。get()使得错误检查更简单些，检查第二个get()是否为换行符即可。
 
@@ -90,9 +98,9 @@ inflatable guest = {  // 初始化方式
 };
 ```
 
-### 函数
+### Function
 
-#### 默认值
+#### Default Value
 
 必须从右向左添加默认值
 
@@ -101,11 +109,11 @@ int harpo (int a, int b = 4, int c = 5);  // valid
 int chico (int a, int b = 6, int c);  // invalid
 ```
 
-#### 函数重载
+#### Overloaded
 
 与函数多态是同一回事，但我们通常用函数重载，意思是可以有多个同名函数，关键是函数参数列表，也称为函数特征标（function signature)
 
-### 类
+### Class
 
 ``` cpp
 // 头文件
@@ -173,6 +181,57 @@ a = MyClass(1, 2);
 
 ## STL
 
+### Vector
+
+一个关于方向处理的设计
+
+``` cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    // 测试样例
+    // 1
+    // SSSSSLSSRS
+    // 2
+    // SR
+    // SL
+    int n;
+    int x = 0, y = 0;
+    cin >> n;
+
+    vector<vector<int>> v = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    int d = 0;
+    while (n--) {
+        string str;
+        cin >> str;
+        for (int i = 0; i < str.size(); ++i) {
+            if (str[i] == 'R') {
+                d = d + 1;
+                if (d > 3) {
+                    d = d - 4;
+                }
+            } else if (str[i] == 'L') {
+                d = d - 1;
+                if (d < 0) {
+                    d = d + 4;
+                }
+            } else if (str[i] == 'S') {
+                x += v[d][0];
+                y += v[d][1];
+            }
+        }
+    }
+    if (d != 0 || (x == 0 && y == 0)) {
+        cout << "bounded" << endl;
+    } else {
+        cout << "unbounded" << endl;
+    }
+    return 0;
+}
+```
+
 ### Map
 
 ``` cpp
@@ -211,3 +270,175 @@ for (auto it = m.begin(); it != m.end();) {
   m.erase(it++); // 或者 it = m.erase(it);
 }
 ```
+
+## Algorithm
+
+### Prime
+
+``` cpp
+bool is_prime[maxn];
+
+int sieve(int n) {
+    int p = 0;
+    for(int i = 0; i <= n; ++i) {
+        is_prime[i] = true;
+    }
+    is_prime[0] = is_prime[1] = false;
+    for (int i = 2; i <= n; ++i){
+        if(is_prime[i]){
+            for(int j = i + i; j <= n; j += i) {
+                is_prime[j] = false;
+            }
+        }
+    }
+    return 0;
+}
+```
+
+### Fast Power
+
+``` cpp
+int fast_power (int b, int e) {
+    int r = 1;
+    while (e) {
+        if (e & 1) {
+            r *= b;
+        }
+        b *= b;
+        b >>= 1;
+    }
+    return r;
+}
+```
+
+### GCD
+
+``` cpp
+int gcd(int a, int b) {
+    int t;
+    while (b) {
+        t = b;
+        b = a % b;
+        a = t;
+    }
+    return a;
+}
+```
+
+### Union Find
+
+``` cpp
+union_find
+```
+
+
+### Sort
+
+``` cpp
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+bool cmp (int i, int j) {
+    return (i < j);
+}
+
+int main () {
+    int arr[] = {32,71,12,45,26,80,53,33};
+    std::vector<int> vec (arr, arr + 8);
+
+    std::sort(vec.begin(), vec.begin() + 4);  // default <
+    std::sort(vec.begin() + 4, vec.end(), cmp);
+
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
+        std::cout << ' ' << *it;
+    }
+
+    return 0;
+}
+```
+
+## IO
+
+
+### Multi Cin
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main()
+{
+    // Sample Input
+    // 1 5
+    // 10 20
+    // 400 516
+    int a,b;
+    while(cin >> a >> b)
+    {
+        cout << a+b << endl;
+    }
+    return 0;
+}
+```
+
+### Getline()
+
+``` cpp
+#include <vector>
+#include <sstream>
+
+int main() {
+    // istream& getline(istream& is, string& str, char delim);  从is开始读取字符, 直到遇到分隔符delim, 将读取的内容存入str
+    // istream& getline(istream& is, string& str); 从is开始读取字符, 直到遇到换行符, 将读取的内容存入str
+    string s;
+    getline(cin, s);
+
+    vector<string> stu;
+    stringstream sstr(s);
+    string token;
+
+    while(getline(sstr, token, ',')) {
+        stu.push_back(token);
+    }
+}
+```
+
+### split
+
+stringstream可以吞下任何类型，根据实际需要吐出不同的类型。
+
+``` cpp
+int s2i(string s) {
+    stringstream ss;
+    ss << s;
+    int x;
+    ss >> x;
+    return x;
+}
+```
+
+``` cpp
+string i2s(int i) {
+    stringstream ss;
+    ss << i;
+    string s;
+    ss >> s;
+    return s;
+}
+```
+
+``` cpp
+void split(const string& s, vector<int>& v, const string& c) {
+    string::size_type pos1, pos2;
+    pos2 = s.find(c);
+    pos1 = 0;
+    while(string::npos != pos2) {
+        v.push_back(stoi(s.substr(pos1, pos2-pos1)));
+        pos1 = pos2 + c.size();
+        pos2 = s.find(c, pos1);
+    }
+    if(pos1 != s.length())
+    v.push_back(stoi(s.substr(pos1)));
+}
+```
+
