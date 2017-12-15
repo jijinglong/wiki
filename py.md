@@ -622,8 +622,14 @@ pow(x, y[, z])
 ```
 >>> 5 ** 2  # power
 25
->>> pow(5, 2)
-25
+>>> pow
+```
+
+pow() 通过内置的方法直接调用，内置方法会把参数作为整型，而 math 模块则会把参数转换为 float。
+
+```
+import math   # 导入 math 模块
+print "math.pow(100, -2) : ", math.pow(100, -2)
 ```
 
 #### sum()
