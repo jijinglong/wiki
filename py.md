@@ -27,7 +27,7 @@
       - [string.ljust(width)](#stringljustwidth)
       - [string.lower()](#stringlower)
       - [string.lstrip()](#stringlstrip)
-      - [string.maketrans(intab, outtab])](#stringmaketransintab-outtab)
+      - [string.maketrans(intab, outtab)](#stringmaketransintab-outtab)
       - [string.translate(str, del="")](#stringtranslatestr-del)
       - [max(str)](#maxstr)
       - [min(str)](#minstr)
@@ -102,10 +102,10 @@
       - [reverse()](#reverse)
       - [set()](#set)
       - [dict()](#dict)
+      - [sort](#sort)
+      - [sorted](#sorted)
     - [Unpacking Argument Lists](#unpacking-argument-lists)
     - [Lambda Expressions](#lambda-expressions)
-    - [sort](#sort)
-    - [sorted](#sorted)
   - [Class](#class)
   - [Module](#module)
     - [Package](#package)
@@ -276,7 +276,7 @@ print "My name is %s and weight is %d kg!" % ('Zara', 21)
 #### string.lstrip()
 截掉 string 左边的空格
 
-#### string.maketrans(intab, outtab])
+#### string.maketrans(intab, outtab)
 maketrans() 方法用于创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。
 
 #### string.translate(str, del="")
@@ -836,6 +836,49 @@ set(['r', 'b', 'u', 'n'])
 >>>
 ```
 
+
+#### sort
+
+```
+>>> pairs = [(1, 'one'), (2, 'two'), (3, 'three'), (4, 'four')]
+>>> pairs.sort(key=lambda pair: pair[1])
+>>> pairs
+[(4, 'four'), (1, 'one'), (3, 'three'), (2, 'two')]
+```
+
+#### sorted
+
+sorted(iterable[, cmp[, key[, reverse]]])
+
+- iterable -- 可迭代对象。
+- cmp -- 比较的函数，这个具有两个参数，参数的值都是从可迭代对象中取出，此函数必须遵守的规则为，大于则返回1，小于则返回-1，等于则返回0。
+- key -- 主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序。
+- reverse -- 排序规则，reverse = True 降序 ， reverse = False 升序（默认）。
+
+```
+>>>a = [5,7,6,3,4,1,2]
+>>> b = sorted(a)       # 保留原列表
+>>> a
+[5, 7, 6, 3, 4, 1, 2]
+>>> b
+[1, 2, 3, 4, 5, 6, 7]
+
+>>> L=[('b',2),('a',1),('c',3),('d',4)]
+>>> sorted(L, cmp=lambda x,y:cmp(x[1],y[1]))   # 利用cmp函数
+[('a', 1), ('b', 2), ('c', 3), ('d', 4)]
+>>> sorted(L, key=lambda x:x[1])               # 利用key
+[('a', 1), ('b', 2), ('c', 3), ('d', 4)]
+
+
+>>> students = [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
+>>> sorted(students, key=lambda s: s[2])            # 按年龄排序
+[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+
+>>> sorted(students, key=lambda s: s[2], reverse=True)       # 按降序
+[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
+>>>
+```
+
 ### Unpacking Argument Lists
 
 ```
@@ -871,48 +914,6 @@ In the same fashion, dictionaries can deliver keyword arguments with the ** oper
 42
 >>> f(1)
 43
-```
-
-### sort
-
-```
->>> pairs = [(1, 'one'), (2, 'two'), (3, 'three'), (4, 'four')]
->>> pairs.sort(key=lambda pair: pair[1])
->>> pairs
-[(4, 'four'), (1, 'one'), (3, 'three'), (2, 'two')]
-```
-
-### sorted
-
-sorted(iterable[, cmp[, key[, reverse]]])
-
-- iterable -- 可迭代对象。
-- cmp -- 比较的函数，这个具有两个参数，参数的值都是从可迭代对象中取出，此函数必须遵守的规则为，大于则返回1，小于则返回-1，等于则返回0。
-- key -- 主要是用来进行比较的元素，只有一个参数，具体的函数的参数就是取自于可迭代对象中，指定可迭代对象中的一个元素来进行排序。
-- reverse -- 排序规则，reverse = True 降序 ， reverse = False 升序（默认）。
-
-```
->>>a = [5,7,6,3,4,1,2]
->>> b = sorted(a)       # 保留原列表
->>> a
-[5, 7, 6, 3, 4, 1, 2]
->>> b
-[1, 2, 3, 4, 5, 6, 7]
-
->>> L=[('b',2),('a',1),('c',3),('d',4)]
->>> sorted(L, cmp=lambda x,y:cmp(x[1],y[1]))   # 利用cmp函数
-[('a', 1), ('b', 2), ('c', 3), ('d', 4)]
->>> sorted(L, key=lambda x:x[1])               # 利用key
-[('a', 1), ('b', 2), ('c', 3), ('d', 4)]
-
-
->>> students = [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
->>> sorted(students, key=lambda s: s[2])            # 按年龄排序
-[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
-
->>> sorted(students, key=lambda s: s[2], reverse=True)       # 按降序
-[('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
->>>
 ```
 
 ## Class
@@ -955,10 +956,6 @@ package_runoob
 |-- runoob1.py
 |-- runoob2.py
 ```
-
-源代码如下
-
-
 
 ## Use
 
