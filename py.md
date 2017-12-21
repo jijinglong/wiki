@@ -971,6 +971,12 @@ str=raw_input()
 res=[int(s) for s in str.split(',') if s.isdigit()]
 ```
 
+reverse string
+```
+x = "abc"
+print x[::-1]
+```
+
 ## Lib
 
 ``` bash
