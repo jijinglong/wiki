@@ -977,6 +977,37 @@ x = "abc"
 print x[::-1]
 ```
 
+dp
+
+```
+gold=[int(x) for x in raw_input().split(',') if x.isdigit()]
+
+
+def memo(func):
+    cache = {}
+
+    def wrap(a, s, e):
+        if s not in cache:
+            cache[s] = {}
+        if e not in cache[s]:
+            cache[s][e] = func(a, s, e)
+        return cache[s][e]
+    return wrap
+
+
+@memo
+def solve(a, s, e):
+    l=e-s
+    if l < 0:
+        return 0
+    if l == 0:
+        return a[s]
+
+    return max([a[s] - solve(a, s+1, e), a[e] - solve(a, s, e-1)])
+
+print solve(gold, 0, len(gold) - 1)
+```
+
 ## Lib
 
 ``` bash
