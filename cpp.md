@@ -442,3 +442,16 @@ void split(const string& s, vector<int>& v, const string& c) {
 }
 ```
 
+### CLIMIT
+
+``` cpp
+#include <climit>
+
+INT_MIN
+INT_MAX
+LONG_MIN
+LONG_MAX
+LLONG_MIN
+LLONG_MAX
+```
+
