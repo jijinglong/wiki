@@ -977,6 +977,16 @@ x = "abc"
 print x[::-1]
 ```
 
+iter与list的区别，iter会迭代到下一个
+```
+a=[1, 2, 3 ,4]
+b=iter(a)
+print 1 in a
+print 1 in a
+print 1 in b
+print 1 in b
+```
+
 dp
 
 ```
