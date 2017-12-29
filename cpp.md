@@ -442,6 +442,38 @@ void split(const string& s, vector<int>& v, const string& c) {
 }
 ```
 
+```
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void split(const string& s, vector<int>& v, const string& c) {
+    string::size_type pos1, pos2;
+    pos2 = s.find(c);
+    pos1 = 0;
+    while(string::npos != pos2) {
+        v.push_back(stoi(s.substr(pos1, pos2-pos1)));
+        pos1 = pos2 + c.size();
+        pos2 = s.find(c, pos1);
+    }
+    if(pos1 != s.length())
+        v.push_back(stoi(s.substr(pos1)));
+}
+
+int main() {
+    string s;
+    cin >> s;
+
+    vector<int> v;
+    split(s, v, ",");
+
+    for (int i =0; i < v.size(); i++){
+        cout << v[i] << endl;
+    }
+    return 0;
+}
+```
+
 ### CLIMIT
 
 ``` cpp
