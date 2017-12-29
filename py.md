@@ -571,7 +571,6 @@ print "Value : %s" %  dict  ## {'Age': 7, 'Name': 'Zara', 'Sex': 'female'}
 
 ## Set
 
-
 ```
 >>> x = set('spam')
 >>> y = set(['h','a','m'])
@@ -590,7 +589,7 @@ set(['p', 's'])
 len(s)  # set 的长度
 ```
 
-### Dictionary Built-in Function
+### Set Built-in Function
 
 #### t.add('x')
 添加一项
