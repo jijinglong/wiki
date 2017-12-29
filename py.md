@@ -1,3 +1,7 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
 - [Python](#python)
   - [If Statement](#if-statement)
   - [For Statement](#for-statement)
@@ -82,6 +86,16 @@
       - [dict.values()](#dictvalues)
       - [pop(key[,default])](#popkeydefault)
       - [popitem()](#popitem)
+  - [Set](#set)
+    - [Dictionary Built-in Function](#dictionary-built-in-function-1)
+      - [t.add('x')](#taddx)
+      - [s.update([10,37,42])](#supdate103742)
+      - [s.pop()](#spop)
+      - [s.discard(x)](#sdiscardx)
+      - [s.remove(x)](#sremovex)
+      - [s.clear()](#sclear)
+      - [s.issubset(t)](#sissubsett)
+      - [s.issuperset(t)](#sissupersett)
   - [Function](#function)
     - [Built-in function](#built-in-function)
       - [len()](#len)
@@ -112,6 +126,8 @@
   - [Use](#use)
   - [Lib](#lib)
   - [References](#references)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Python
 
@@ -555,6 +571,7 @@ print "Value : %s" %  dict  ## {'Age': 7, 'Name': 'Zara', 'Sex': 'female'}
 
 ## Set
 
+
 ```
 >>> x = set('spam')
 >>> y = set(['h','a','m'])
@@ -571,27 +588,35 @@ set(['a', 'p', 's', 'h', 'm'])
 set(['p', 's'])
 
 len(s)  # set 的长度
-
-t.add('x')            # 添加一项
-
-s.update([10,37,42])  # 在s中添加多项
-
-s.pop()  # 删除并且返回 set “s”中的一个不确定的元素, 如果为空则引发 KeyError
-
-s.discard(x)   # 如果在 set “s”中存在元素 x, 则删除
-
-s.remove(x)  # 从 set “s”中删除元素 x, 如果不存在则引发 KeyError
-
-s.clear()  # 删除 set “s”中的所有元素
-
-s.issubset(t)
-s <= t  # 测试是否 s 中的每一个元素都在 t 中
-
-s.issuperset(t)
-s >= t  # 测试是否 t 中的每一个元素都在 s 中
-
-x in s  # 测试 x 是否是 s 的成员
 ```
+
+### Dictionary Built-in Function
+
+#### t.add('x')
+添加一项
+
+#### s.update([10,37,42])
+在s中添加多项
+
+#### s.pop()
+删除并且返回 set “s”中的一个不确定的元素, 如果为空则引发 KeyError
+
+#### s.discard(x)
+如果在 set “s”中存在元素 x, 则删除
+
+#### s.remove(x)
+从 set “s”中删除元素 x, 如果不存在则引发 KeyError
+
+#### s.clear()
+删除 set “s”中的所有元素
+
+#### s.issubset(t)
+或者使用 s <= t
+测试是否 s 中的每一个元素都在 t 中
+
+#### s.issuperset(t)
+或者使用 s >= t
+测试是否 t 中的每一个元素都在 s 中
 
 ## Function
 
