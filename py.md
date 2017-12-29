@@ -553,6 +553,46 @@ print "Value : %s" %  dict  ## {'Age': 7, 'Name': 'Zara', 'Sex': 'female'}
 #### popitem()
 随机返回并删除字典中的一对键和值。
 
+## Set
+
+```
+>>> x = set('spam')
+>>> y = set(['h','a','m'])
+>>> x, y
+(set(['a', 'p', 's', 'm']), set(['a', 'h', 'm']))
+
+>>> x & y # 交集
+set(['a', 'm'])
+
+>>> x | y # 并集
+set(['a', 'p', 's', 'h', 'm'])
+
+>>> x - y # 差集
+set(['p', 's'])
+
+len(s)  # set 的长度
+
+t.add('x')            # 添加一项
+
+s.update([10,37,42])  # 在s中添加多项
+
+s.pop()  # 删除并且返回 set “s”中的一个不确定的元素, 如果为空则引发 KeyError
+
+s.discard(x)   # 如果在 set “s”中存在元素 x, 则删除
+
+s.remove(x)  # 从 set “s”中删除元素 x, 如果不存在则引发 KeyError
+
+s.clear()  # 删除 set “s”中的所有元素
+
+s.issubset(t)
+s <= t  # 测试是否 s 中的每一个元素都在 t 中
+
+s.issuperset(t)
+s >= t  # 测试是否 t 中的每一个元素都在 s 中
+
+x in s  # 测试 x 是否是 s 的成员
+```
+
 ## Function
 
 def functionname( parameters ):
@@ -967,8 +1007,7 @@ package_runoob
 
 逗号分隔整数
 ```
-str=raw_input()
-res=[int(s) for s in str.split(',') if s.isdigit()]
+arr = [int(x) for x in raw_input().split(',') if x.isdigit()]
 ```
 
 reverse string
