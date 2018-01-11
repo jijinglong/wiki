@@ -43,9 +43,3 @@ explain select * from test;
 
 ## Util
 
-``` bash
-mysql -B -N -u hike -phiking2016 market1019 -hrds3.mte.io -e "SELECT * FROM network;" |sed "s/,/;/g;s/'/\'/;
-    s/\t/,/g;s/\n//g" > ./track1019_network_2017-12-04
-
-s3cmd put ./track1019_network_2017-12-04 s3://magic-track/1019/snapshot/network/datesub=2017-12-04/
-```
