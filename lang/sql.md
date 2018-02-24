@@ -43,3 +43,5 @@ explain select * from test;
 
 ## Util
 
+SHOW PROCESSLIST;
+CALL mysql.rds_kill(61282);
