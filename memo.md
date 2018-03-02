@@ -40,3 +40,9 @@ TestCampaignReport.json
     "returnRowTotals":true
 }
 ```
+
+curl --data "grant_type=refresh_token" \
+     --data "refresh_token=4/AAAUe9OpUI3EXNdbVyNnfyvtbEYyv9cA_FsRgTZhxYWGTzwET5QcZhQ" \
+     --data "client_id=518407845900-c14hms8902abknju6uo46u2heiat8sqh.apps.googleusercontent.com" \
+     --data "client_secret=EnX_7TPdLTdHPEsUxPXN5D7L" \
+     https://accounts.google.com/o/oauth2/token
